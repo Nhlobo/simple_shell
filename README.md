@@ -13,35 +13,35 @@ This is a basic Unix shell implementation. It allows you to execute various comm
 
 List of allowed functions and system calls
 * chdir 
-close 
-closedir 
-Execve
-exit 
-_exit 
-fflush 
-fork 
-free 
-getcwd 
-getline 
-getpid 
-isatty 
-kill 
-malloc 
-open 
-opendir 
-perror 
-read 
-readdir 
-signal 
-stat 
-lstat 
-fstat 
-strtok 
-Wait
-Waitpid
-wait3 
-wait4 
-write 
+* close 
+* closedir 
+* Execve
+* exit 
+* _exit 
+* fflush 
+* fork 
+* free 
+* getcwd 
+* getline 
+* getpid 
+* isatty 
+* kill 
+* malloc 
+* open 
+* opendir 
+* perror 
+* read 
+* readdir 
+* signal 
+* stat 
+* lstat 
+* fstat 
+* strtok 
+* Wait
+* Waitpid
+* wait3 
+* wait4 
+* write 
 
 ## Additional Headers
 

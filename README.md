@@ -12,7 +12,7 @@ This is a basic Unix shell implementation. It allows you to execute various comm
 
 
 List of allowed functions and system calls
-chdir 
+* chdir 
 close 
 closedir 
 Execve

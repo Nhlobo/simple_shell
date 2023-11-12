@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * oneman - Print prompt.
+ * winning_team - Print prompt.
  * Return: Void.
  */
-void oneman(void) {
+void winning_team(void) {
     printf("why? ");
 }

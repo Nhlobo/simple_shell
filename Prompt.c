@@ -5,5 +5,5 @@
  * Return: Void.
  */
 void winning_team(void) {
-    printf("why? ");
+    printf("WHY? ");
 }

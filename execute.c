@@ -7,7 +7,7 @@
 #include <dirent.h>
 
 void execute_command(char *command) {
-    char *args[3]; // Example: maximum of 3 arguments
+    char *args[4]; // Example: maximum of 3 arguments and one for NULL
     
     // Tokenize the command
     char *token = strtok(command, " ");
@@ -58,6 +58,7 @@ void execute_command(char *command) {
         // Read and display the contents of a file using 'cat' command
         if (args[1] != NULL) {
             args[0] = "cat";
+            args[1] = NULL; // Null-terminate the arguments array
             execvp("cat", args);
         }
     }

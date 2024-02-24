@@ -9,7 +9,7 @@
 int execute(char **args, char **env)
 {
 	if (args == NULL || args[0] == NULL)
-		return 0;
+		return (0);
 
 	if (_strcmp(args[0], "env") == 0)
 	{
@@ -35,10 +35,10 @@ int execute(char **args, char **env)
 
 		/* Free the copy of environment variables */
 		free_env(env_copy);
-		return status;
+		return (status);
 	}
 
 	/* Your existing code for other commands goes here */
 
-	return 1; /* Indicate command not found */
+	return (1); /* Indicate command not found */
 }

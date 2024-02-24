@@ -6,17 +6,17 @@
  */
 int main(void)
 {
-    char *cmd;
+	char *cmd;
 
-    while (1)
-    {
-        print_prompt();
-        cmd = read_line();
-        if (!cmd)
-            break;
-        execute(cmd);
-        free(cmd);
-    }
+	while (1)
+	{
+		print_prompt();
+		cmd = read_line();
+		if (!cmd)
+			break;
+		execute(cmd);
+		free(cmd);
+	}
 
-    return 0;
+	return 0;
 }

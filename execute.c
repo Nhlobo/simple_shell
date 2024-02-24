@@ -12,7 +12,7 @@
  */
 int execute(char *cmd)
 {
-    pid_t pid, wpid;
+    pid_t pid;
     int status;
 
     pid = fork();
@@ -34,10 +34,7 @@ int execute(char *cmd)
     }
     else
     {
-        do
-        {
-            wpid = waitpid(pid, &status, WUNTRACED);
-        } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+        waitpid(pid, &status, WUNTRACED);
     }
 
     return 0;

@@ -7,20 +7,20 @@
  */
 int execute(char *cmd)
 {
-    char *args[2] = {cmd, NULL};
+	if (fork() == 0)
+	{
+		char *args[2] = {cmd, NULL};
 
-    if (fork() == 0)
-    {
-        if (execve(cmd, args, NULL) == -1)
-        {
-            perror("Error");
-        }
-        exit(EXIT_FAILURE);
-    }
-    else
-    {
-        wait(NULL);
-    }
+		if (execve(cmd, args, NULL) == -1)
+		{
+			perror("Error");
+		}
+		exit(EXIT_FAILURE);
+	}
+	else
+	{
+		wait(NULL);
+	}
 
-    return 0;
+	return 0;
 }

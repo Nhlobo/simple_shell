@@ -18,5 +18,5 @@ int main(void)
 		free(cmd);
 	}
 
-	return (0);  // Corrected line
+	return 0;  /* Corrected line */
 }

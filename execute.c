@@ -7,14 +7,13 @@
 #include <dirent.h>
 
 /**
- * Execute a shell command.
+ * execute_command - Execute a shell command.
+ * @command: The command string to be executed.
  *
  * This function takes a command string, tokenizes it, and performs the corresponding action
- * based on the command. It supports commands like listing directories, changing directories, 
- * displaying the current working directory, creating directories, erasing files/directories, 
+ * based on the command. It supports commands like listing directories, changing directories,
+ * displaying the current working directory, creating directories, erasing files/directories,
  * and reading file contents.
- *
- * @param command The command string to be executed.
  */
 void execute_command(char *command) {
     char *args[4]; /* Example: maximum of 3 arguments and one for NULL */

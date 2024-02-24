@@ -23,5 +23,5 @@ int execute(char *cmd)
 		wait(NULL);
 	}
 
-	return 0;  // Corrected line
+	return 0; /* Corrected line */
 }

@@ -19,7 +19,7 @@ int execute(char *cmd)
     if (pid == -1)
     {
         perror("fork");
-        exit(EXIT_FAILURE);
+        _exit(EXIT_FAILURE);  // Use _exit instead of exit in child process
     }
 
     if (pid == 0)
@@ -27,10 +27,10 @@ int execute(char *cmd)
         char *args[2] = {cmd, NULL};
         if (execve(cmd, args, NULL) == -1)
         {
-            perror("Error");
-            exit(EXIT_FAILURE);
+            perror("execve");
+            _exit(EXIT_FAILURE);  // Use _exit in case of execve failure
         }
-        exit(EXIT_SUCCESS);
+        _exit(EXIT_SUCCESS);
     }
     else
     {

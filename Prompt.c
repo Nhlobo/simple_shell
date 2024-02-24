@@ -1,9 +1,9 @@
 #include "shell.h"
 
 /**
- * winning_team - Print prompt.
- * Return: Void.
+ * print_prompt - Print the shell prompt
  */
-void winning_team(void) {
-    printf("WHY? ");
+void print_prompt(void)
+{
+    write(STDOUT_FILENO, "$ ", 2);
 }

@@ -14,13 +14,14 @@ int execute(char *cmd)
 		if (execve(cmd, args, NULL) == -1)
 		{
 			perror("Error");
+			_exit(EXIT_FAILURE);  // Corrected line
 		}
-		exit(EXIT_FAILURE);
+		_exit(EXIT_SUCCESS);  // Corrected line
 	}
 	else
 	{
 		wait(NULL);
 	}
 
-	return 0;
+	return (0);  // Corrected line
 }

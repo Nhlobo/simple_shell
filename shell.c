@@ -1,23 +1,20 @@
 #include "shell.h"
 #include <stdio.h>
-#include <stdlib.h>
 #include <string.h>
-#include <unistd.h>
+#include <stdlib.h>
 
-void handle_special_characters(char *command) {
-    // Implement code to handle special characters in the command
-}
-
-void implement_redirections(char *command) {
-    // Implement code to handle input/output redirections
-}
-
-void implement_pipes(char *command) {
-    // Implement code to handle pipes
-}
-
-void implement_cursor_movement(char *command) {
-    // Implement code to handle cursor movement
+void handle_builtin(char *cmd) {
+    if (strcmp(cmd, "exit") == 0) {
+        printf("Exiting shell...\n");
+        exit(0);
+    } else if (strcmp(cmd, "env") == 0) {
+        // Implement handling for "env" command
+        printf("Environment variables:\n");
+        // Print environment variables
+    } else {
+        // Handle non-built-in commands
+        execute_command(cmd);
+    }
 }
 
 int main(void) {
@@ -27,19 +24,15 @@ int main(void) {
         print_prompt();
         cmd = read_line();
 
-        if (cmd == NULL) {
-            // End of file condition (Ctrl+D)
-            printf("\n");
+        // Check for end of file condition
+        if (!cmd) {
+            printf("\nExiting shell...\n");
             break;
         }
 
-        handle_builtin_commands(cmd);
-        execute_command(cmd);
-        handle_special_characters(cmd);
-        implement_redirections(cmd);
-        implement_pipes(cmd);
-        implement_cursor_movement(cmd);
+        handle_builtin(cmd);
 
+        // Free allocated memory
         free(cmd);
     }
 

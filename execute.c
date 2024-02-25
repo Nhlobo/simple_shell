@@ -26,6 +26,10 @@ int execute(char *cmd) {
         do {
             wpid = waitpid(pid, &status, WUNTRACED);
         } while (!WIFEXITED(status) && !WIFSIGNALED(status));
+
+        if (WIFSIGNALED(status)) {
+            fprintf(stderr, "Command terminated by signal %d\n", WTERMSIG(status));
+        }
     }
 
     return 0;

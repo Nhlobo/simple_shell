@@ -1,73 +1,88 @@
-# Unix Shell
+### Simple Shell Project
 
-This is a basic Unix shell implementation allowing users to execute various commands. Functionalities include listing directories, changing directories, displaying the current working directory, creating directories, removing files or directories, and reading file contents.
+This project involves creating a simple UNIX command-line interpreter, known as a shell. The shell allows users to interact with the operating system by executing commands. The implementation follows specific guidelines and includes various features.
 
-## Folder Description
+#### Project Overview
 
-- **execute.c:** Implementation of the `execute_command` function, which executes the corresponding command.
-- **shell.h:** Header file with function declarations and necessary includes.
-- **shell.c:** Main file containing the `main` function for user input, command execution, and repeated processing.
-- **prompt.c:** Implementation of the `winning_team` function, which prints the shell prompt.
-- **README.md:** Information about the shell, folder/file structure, and usage.
+The Simple Shell project challenges participants in the ALX School of Software Engineering to demonstrate their understanding of:
 
-## List of Allowed Functions and System Calls
+- Basics of programming
+- Basics of C
+- Thinking like an engineer
+- Group work
+- Learning how to learn
 
-The shell uses the following functions and system calls:
+#### Project Tasks and Objectives
 
-- `chdir`, `close`, `closedir`, `execve`, `exit`, `_exit`, `fflush`, `fork`, `free`, `getcwd`, `getline`, `getpid`, `isatty`, `kill`, `malloc`, `open`, `opendir`, `perror`, `read`, `readdir`, `signal`, `stat`, `lstat`, `fstat`, `strtok`, `wait`, `waitpid`, `wait3`, `wait4`, `write`.
+The project consists of several tasks, each building upon the previous ones. Here is an overview of the key tasks and their objectives:
 
-## Additional Headers
+1. **Betty would be proud**
+   - Write code that passes the Betty checks, ensuring clean and readable code.
 
-Additional headers are included based on the implemented functionality:
+2. **Simple shell 0.1**
+   - Write a UNIX command-line interpreter.
+   - Display a prompt, wait for user input, and execute simple commands.
+   - Handle errors, including the "end of file" condition.
 
-- `<unistd.h>`: For system calls related to executing commands and changing directories.
-- `<stdlib.h>`: For memory management and string manipulation functions.
-- `<string.h>`: For string manipulation functions.
-- `<sys/types.h>`: For data types used in system calls.
-- `<sys/stat.h>`, `<dirent.h>`: For file and directory manipulation functions.
+3. **Simple shell 0.2**
+   - Handle command lines with arguments.
 
-## Error Handling and Validation Checks
+4. **Simple shell 0.3**
+   - Handle the PATH.
+   - Avoid calling `fork` if the command doesn’t exist.
 
-The shell includes error handling and validation checks for scenarios like invalid commands, missing arguments, and file/directory existence checks. Error messages are displayed to the user when needed.
+5. **Simple shell 0.4**
+   - Implement the `exit` built-in to exit the shell.
 
-## Usage
+6. **Simple shell 1.0**
+   - Implement the `env` built-in to print the current environment.
 
-Compile the source files with a C compiler and run the resulting executable. The shell will display a prompt for entering commands. Example commands:
+7. **Simple shell 0.1.1**
+   - Write a custom `getline` function, optimizing the use of the `read` system call.
 
-- `listdir`: Lists the contents of the current directory.
-- `nav [directory]`: Changes the current directory to the specified directory.
-- `showdir`: Displays the current working directory.
-- `createdir [directory]`: Creates a new directory with the specified name.
-- `erase [path]`: Removes the file or directory at the specified path.
-- `read [file]`: Reads and displays the contents of the specified file.
+8. **Simple shell 0.2.1**
+   - Avoid using `strtok`.
 
-## Example
+9. **Simple shell 0.4.1**
+   - Handle arguments for the built-in `exit`.
 
-Example of using the shell:
+10. **setenv, unsetenv**
+    - Implement the `setenv` and `unsetenv` built-in commands.
 
-```shell
-$ ./shell
-why? listdir
-file1.txt
-file2.txt
-folder1
-folder2
-why? nav folder1
-why? showdir
-Current directory: /home/user/shell/folder1
-why? createdir new_folder
-why? listdir
-file1.txt
-file2.txt
-folder2
-new_folder
-why? erase new_folder
-why? listdir
-file1.txt
-file2.txt
-folder2
-why? read file1.txt
-Contents of file1.txt:
-Hello, world!
-why? exit
-$
+11. **cd**
+    - Implement the `cd` built-in to change the current directory.
+
+12. **;**
+    - Handle the command separator `;`.
+
+13. **&& and ||**
+    - Handle the shell logical operators `&&` and `||`.
+
+14. **alias**
+    - Implement the `alias` built-in command.
+
+15. **Variables**
+    - Handle variables replacement, including `$?` and `$$`.
+
+16. **Comments**
+    - Handle comments (`#`).
+
+17. **File as input**
+    - Allow the shell to take a file as a command-line argument, containing commands to execute.
+
+#### Compilation and Testing
+
+- All code is compiled on Ubuntu 20.04 LTS using `gcc`.
+- The shell should have the same output and error output as `/bin/sh`.
+- Testing involves both interactive mode and non-interactive mode.
+
+#### Allowed Functions and System Calls
+
+- A specific list of functions and system calls is allowed for this project.
+
+#### Requirements and Guidelines
+
+- Follow specific coding style guidelines (Betty style).
+- No memory leaks are allowed.
+- Use system calls only when necessary.
+- Maintain a clear project structure with documentation (README.md, AUTHORS, etc.).

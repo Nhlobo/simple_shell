@@ -3,6 +3,10 @@
 #include <string.h>
 #include <stdlib.h>
 
+/**
+ * Handles built-in commands like "exit" and "env".
+ * @param cmd The command to be handled.
+ */
 void handle_builtin(char *cmd) {
     if (strcmp(cmd, "exit") == 0) {
         printf("Exiting shell...\n");
@@ -17,6 +21,19 @@ void handle_builtin(char *cmd) {
     }
 }
 
+/**
+ * Executes the given command.
+ * @param cmd The command to be executed.
+ */
+void execute_command(char *cmd) {
+    // Implementation for executing non-built-in commands
+    // You may need to define this function based on your requirements
+}
+
+/**
+ * Main function for the shell.
+ * @return Returns 0 on successful execution.
+ */
 int main(void) {
     char *cmd;
 

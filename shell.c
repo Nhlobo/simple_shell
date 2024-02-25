@@ -18,21 +18,26 @@ void handle_builtin(char *cmd) {
         exit(0);
     } else if (strcmp(cmd, "env") == 0) {
         // Implement handling for "env" command
-        printf("Environment variables:\n");
-        // Print environment variables
+        char **env = environ;
+        while (*env != NULL) {
+            printf("%s\n", *env);
+            env++;
+        }
     } else {
-        // Handle non-built-in commands
-        execute_command(cmd);
-    }
-}
+        // Tokenize command line
+        int i = 0;
+        char *token;
+        char *args[10];  // Adjust the size based on your requirements
+        token = strtok(cmd, " \t\n");
+        while (token != NULL) {
+            args[i++] = token;
+            token = strtok(NULL, " \t\n");
+        }
+        args[i] = NULL;  // Null-terminate the arguments array
 
-/**
- * Executes the given command.
- * @param cmd The command to be executed.
- */
-void execute_command(char *cmd) {
-    // Implementation for executing non-built-in commands
-    // You may need to define this function based on your requirements
+        // Handle non-built-in commands
+        execute_command(args);
+    }
 }
 
 /**

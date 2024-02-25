@@ -7,7 +7,8 @@ int main(void) {
     while (1) {
         print_prompt();
         cmd = read_line();
-        // Execute the command (to be implemented later)
+        execute(cmd);
+        free(cmd);  // Free the allocated memory for the command
     }
 
     return 0;

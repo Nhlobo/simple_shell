@@ -1,7 +1,12 @@
+// shell.c
+
 #include "shell.h"
 #include <stdio.h>
-#include <string.h>
 #include <stdlib.h>
+#include <string.h>
+#include <unistd.h>
+#include <sys/types.h>
+#include <sys/wait.h>
 
 /**
  * Handles built-in commands like "exit" and "env".
@@ -43,7 +48,7 @@ int main(void) {
 
         // Check for end of file condition
         if (!cmd) {
-            printf("\nExiting shell...\n");
+            fprintf(stderr, "\nError reading command. Exiting shell...\n");
             break;
         }
 

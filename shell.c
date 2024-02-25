@@ -1,17 +1,23 @@
 #include "shell.h"
 #include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
+#include <unistd.h>
 
-void handle_builtin_commands(char *command) {
-    if (strcmp(command, "exit") == 0) {
-        printf("Exiting shell...\n");
-        exit(0);
-    } else if (strcmp(command, "env") == 0) {
-        // Implement env command to print the current environment
-        // For example: printf("PATH=%s\n", getenv("PATH"));
+void execute_command(char *command) {
+    char *path = search_path(command);
+
+    if (path != NULL) {
+        printf("Executing command: %s\n", path);
+        // Implement code to execute the command using execve
     } else {
-        // Handle other built-in commands if needed
+        printf("Command not found: %s\n", command);
     }
+}
+
+char *search_path(char *command) {
+    // Implement code to search for the executable in the directories specified by PATH
+    // Return the full path to the executable if found, otherwise return NULL
 }
 
 int main(void) {
@@ -28,7 +34,7 @@ int main(void) {
         }
 
         handle_builtin_commands(cmd);
-        // Execute the command if it's not a built-in command
+        execute_command(cmd);
 
         free(cmd);
     }

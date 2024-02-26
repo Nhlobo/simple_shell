@@ -14,17 +14,17 @@
  */
 char *custom_read_function(void)
 {
-    size_t bufsize = 0;
-    char *line = NULL;
+	size_t bufsize = 0;
+	char *line = NULL;
 
-    /* Read user input */
-    if (getline(&line, &bufsize, stdin) == -1)
-    {
-        free(line);  /* Free allocated memory on EOF */
-        return NULL;
-    }
+	/* Read user input */
+	if (getline(&line, &bufsize, stdin) == -1)
+	{
+		free(line);  /* Free allocated memory on EOF */
+		return NULL;
+	}
 
-    return line;
+	return line;
 }
 
 /**
@@ -33,30 +33,30 @@ char *custom_read_function(void)
  */
 void custom_execute_function(char *command)
 {
-    if (command == NULL)
-    {
-        /* Handle EOF condition */
-        write(2, "Exiting shell...\n", 18);
-        exit(EXIT_SUCCESS);
-    }
+	if (command == NULL)
+	{
+		/* Handle EOF condition */
+		write(2, "Exiting shell...\n", 18);
+		exit(EXIT_SUCCESS);
+	}
 
-    /* Remove the newline character from the end of the command */
-    size_t len = strlen(command);
-    if (len > 0 && command[len - 1] == '\n')
-        command[len - 1] = '\0';
+	/* Remove the newline character from the end of the command */
+	size_t len = strlen(command);
+	if (len > 0 && command[len - 1] == '\n')
+		command[len - 1] = '\0';
 
-    /* Check if the executable exists and is a regular file */
-    struct stat sb;
-    if (stat(command, &sb) == -1 || !S_ISREG(sb.st_mode))
-    {
-        write(2, "Command not found\n", 18);
-        return;
-    }
+	/* Check if the executable exists and is a regular file */
+	struct stat sb;
+	if (stat(command, &sb) == -1 || !S_ISREG(sb.st_mode))
+	{
+		write(2, "Command not found\n", 18);
+		return;
+	}
 
-    /* Use execve to execute the command */
-    if (execve(command, NULL, NULL) == -1)
-    {
-        perror("Execution error");
-        exit(EXIT_FAILURE);
-    }
+	/* Use execve to execute the command */
+	if (execve(command, NULL, NULL) == -1)
+	{
+		perror("Execution error");
+		exit(EXIT_FAILURE);
+	}
 }

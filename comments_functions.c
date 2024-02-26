@@ -1,4 +1,4 @@
-/* Filename: shell_functions.c */
+/* Filename: comments_functions.c */
 
 #include "shell_header.h"
 #include <stdlib.h>

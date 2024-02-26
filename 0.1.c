@@ -4,6 +4,8 @@
 #include <sys/types.h>
 #include <sys/wait.h>
 
+void custom_execute_function(char *command);
+
 int main(void)
 {
     char *command = NULL;

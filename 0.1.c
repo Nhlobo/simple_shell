@@ -9,22 +9,22 @@
  */
 int main(void)
 {
-    char *command;
+	char *command;
 
-    while (1)
-    {
-        /* Display prompt */
-        write(1, "$ ", 2);
+	while (1)
+	{
+		/* Display prompt */
+		write(1, "$ ", 2);
 
-        /* Read user input */
-        command = custom_read_function();
+		/* Read user input */
+		command = custom_read_function();
 
-        /* Execute the command */
-        custom_execute_function(command);
+		/* Execute the command */
+		custom_execute_function(command);
 
-        /* Free allocated memory, handle cleanup, etc. */
-        free(command);
-    }
+		/* Free allocated memory, handle cleanup, etc. */
+		free(command);
+	}
 
-    return (0);
+	return (0);
 }

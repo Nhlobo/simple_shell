@@ -21,10 +21,10 @@ int main(void) {
     char input[MAX_INPUT_SIZE];
 
     while (1) {
-        printf("$ ");  // Display prompt
+        printf("$ ");  /* Display prompt */
         fgets(input, MAX_INPUT_SIZE, stdin);
 
-        // Remove newline character
+        /* Remove newline character */
         if (input[strlen(input) - 1] == '\n') {
             input[strlen(input) - 1] = '\0';
         }
@@ -42,7 +42,7 @@ int main(void) {
 }
 
 void execute_command_with_alias(char *command) {
-    // Check if the command is an alias
+    /* Check if the command is an alias */
     for (int i = 0; i < MAX_ALIAS_SIZE; i++) {
         if (strcmp(alias_list[i].alias_name, command) == 0) {
             command = alias_list[i].alias_command;
@@ -50,7 +50,7 @@ void execute_command_with_alias(char *command) {
         }
     }
 
-    // Execute the command
+    /* Execute the command */
     system(command);
 }
 
@@ -58,24 +58,24 @@ void handle_alias(char *alias_input) {
     char *alias_tokens[MAX_ALIAS_SIZE];
     int alias_token_count = 0;
 
-    // Tokenize alias input
+    /* Tokenize alias input */
     char *token = strtok(alias_input, " ");
     while (token != NULL && alias_token_count < MAX_ALIAS_SIZE) {
         alias_tokens[alias_token_count++] = token;
         token = strtok(NULL, " ");
     }
 
-    // Validate alias syntax
+    /* Validate alias syntax */
     if (alias_token_count < 4 || strcmp(alias_tokens[2], "=") != 0) {
         printf("Invalid alias syntax\n");
         return;
     }
 
-    // Extract alias name and command
+    /* Extract alias name and command */
     char *alias_name = alias_tokens[1];
     char *alias_command = alias_tokens[3];
 
-    // Store alias in the list
+    /* Store alias in the list */
     for (int i = 0; i < MAX_ALIAS_SIZE; i++) {
         if (alias_list[i].alias_name[0] == '\0') {
             strncpy(alias_list[i].alias_name, alias_name, MAX_ALIAS_SIZE - 1);

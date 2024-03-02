@@ -14,7 +14,7 @@ void handle_cd(char *args[]) {
 }
 
 void handle_help() {
-    printf("Simple Shell Help:\n");
+    printf("SimpleShell$ Help:\n");
     printf("1. cd [directory] - Change current directory\n");
     printf("2. exit - Exit the shell\n");
 }

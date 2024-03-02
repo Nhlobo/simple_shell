@@ -1,34 +1,25 @@
+#include <stdlib.h>
+#include <unistd.h>
 #include <string.h>
 
-char **parse_input(char *input) {
-    // Split input string into arguments based on spaces
-    int buffer_size = 64;
-    int position = 0;
-    char **args = malloc(buffer_size * sizeof(char *));
-    char *arg;
+char *search_path(char *command) {
+    char *path = getenv("PATH");
+    char *path_copy = strdup(path);
+    char *path_token = strtok(path_copy, ":");
 
-    if (!args) {
-        fprintf(stderr, "Memory allocation failed\n");
-        exit(EXIT_FAILURE);
-    }
-
-    arg = strtok(input, " \t\n");
-    while (arg != NULL) {
-        args[position] = arg;
-        position++;
-
-        if (position >= buffer_size) {
-            buffer_size += 64;
-            args = realloc(args, buffer_size * sizeof(char *));
-            if (!args) {
-                fprintf(stderr, "Memory allocation failed\n");
-                exit(EXIT_FAILURE);
-            }
+    while (path_token) {
+        char *full_path = malloc(strlen(path_token) + strlen(command) + 2);
+        sprintf(full_path, "%s/%s", path_token, command);
+        
+        if (access(full_path, X_OK) == 0) { // Check if the path is executable
+            free(path_copy);
+            return full_path;
         }
 
-        arg = strtok(NULL, " \t\n");
+        free(full_path);
+        path_token = strtok(NULL, ":");
     }
-    
-    args[position] = NULL; // Null-terminate the argument list
-    return args;
+
+    free(path_copy);
+    return NULL;
 }

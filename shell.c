@@ -1,27 +1,19 @@
 #include "shell.h"
-#include "utils.h"
-#include "builtins.h"
+
+#define BUFFER_SIZE 1024
 
 void run_shell() {
-    char *input;
-    char **args;
-    int status;
+    char input[BUFFER_SIZE];
 
-    do {
-        display_prompt();
-        input = custom_getline();
-        args = parse_input(input);
-        
-        if (args[0] != NULL) {
-            if (is_builtin(args)) {
-                status = execute_builtin(args);
-            } else {
-                status = execute_command(args);
-            }
-        }
+    while (1) {
+        printf("SimpleShell$ ");
+        fgets(input, BUFFER_SIZE, stdin);
 
-        free(input);
-        free(args);
+        // Remove newline character
+        input[strcspn(input, "\n")] = 0;
 
-    } while (status);
+        // Implement your shell logic here
+        // For now, let's just print the input
+        printf("You entered: %s\n", input);
+    }
 }

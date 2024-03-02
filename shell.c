@@ -1,12 +1,4 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
-#include <unistd.h>
-#include <sys/types.h>
-#include <sys/wait.h>
-
-#define MAX_INPUT_SIZE 1024
-#define MAX_ARGS 128
+#include "shell.h"
 
 int parse_input(char *input, char **args) {
     int num_args = 0;
@@ -43,7 +35,7 @@ void run_shell() {
     char *args[MAX_ARGS];
     
     while (1) {
-        printf("SimpleShell> ");
+        printf("SimpleShell$ ");
         fgets(input, sizeof(input), stdin);
         
         input[strcspn(input, "\n")] = '\0'; 
@@ -58,10 +50,4 @@ void run_shell() {
             }
         }
     }
-}
-
-int main() {
-    run_shell();
-    
-    return 0;
 }

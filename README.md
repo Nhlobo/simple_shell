@@ -5,13 +5,15 @@ This is a simple shell implementation in C that supports basic shell functionali
 ## Getting Started
 
 To run the shell, compile all the source files using the following command:
+```
 gcc -o shell builtin_commands.c file_redirection.c main.c piping.c shell.c betty_would_be_proud.c history.c prompt.c
+```
 
-Copy
 Then, run the compiled executable:
+```
 ./shell
+```
 
-Copy
 ## Features
 
 - Supports running commands with arguments

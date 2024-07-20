@@ -1,6 +1,8 @@
 # Simple Shell Project
 
 This is a simple shell implementation in C that supports basic shell functionalities such as executing commands, piping, file redirection, history, and more.
+![simple shell Screenshot](https://i.imgur.com/REY3ToL.png)
+
 
 ## Getting Started
 
